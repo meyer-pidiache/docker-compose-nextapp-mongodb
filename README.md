@@ -1,6 +1,6 @@
 # With Docker Compose
 
-This example contains everything needed to get a Next.js development and production environment up and running with Docker Compose.
+This example contains everything needed to get a Next.js and MongoDB development and production environment up and running with Docker Compose.
 
 ## Benefits of Docker Compose
 
@@ -15,15 +15,7 @@ This example contains everything needed to get a Next.js development and product
 Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
 
 ```bash
-npx create-next-app --example with-docker-compose with-docker-compose-app
-```
-
-```bash
-yarn create next-app --example with-docker-compose with-docker-compose-app
-```
-
-```bash
-pnpm create next-app --example with-docker-compose with-docker-compose-app
+git clone https://github.com/meyer-pidiache/ # Pending
 ```
 
 Optionally, after the installation is complete:
@@ -32,19 +24,11 @@ Optionally, after the installation is complete:
 
 It is recommended to commit a lockfile to version control. Although the example will work without one, build errors are more likely to occur when using the latest version of all dependencies. This way, we're always using a known good configuration to develop and run in production.
 
-## Prerequisites
-
-Install [Docker Desktop](https://docs.docker.com/get-docker) for Mac, Windows, or Linux. Docker Desktop includes Docker Compose as part of the installation.
-
 ## Development
 
 First, run the development server:
 
 ```bash
-# Create a network, which allows containers to communicate
-# with each other, by using their container name as a hostname
-docker network create my_network
-
 # Build dev
 docker compose -f docker-compose.dev.yml build
 
@@ -63,10 +47,6 @@ Multistage builds are highly recommended in production. Combined with the Next [
 First, run the production server (Final image approximately 110 MB).
 
 ```bash
-# Create a network, which allows containers to communicate
-# with each other, by using their container name as a hostname
-docker network create my_network
-
 # Build prod
 docker compose -f docker-compose.prod.yml build
 
@@ -77,10 +57,6 @@ docker compose -f docker-compose.prod.yml up -d
 Alternatively, run the production server without multistage builds (Final image approximately 1 GB).
 
 ```bash
-# Create a network, which allows containers to communicate
-# with each other, by using their container name as a hostname
-docker network create my_network
-
 # Build prod without multistage
 docker compose -f docker-compose.prod-without-multistage.yml build
 
@@ -99,3 +75,7 @@ docker kill $(docker ps -aq) && docker rm $(docker ps -aq)
 # Free space
 docker system prune -af --volumes
 ```
+
+## References
+
+- [Next.js with Docker Compose](https://github.com/vercel/next.js/tree/canary/examples/with-docker-compose)
