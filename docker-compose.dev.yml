@@ -1,6 +1,6 @@
 services:
-  next-app-dev:
-    container_name: next-app-dev
+  next-app:
+    container_name: next-app-development
 
     build:
       context: ./next-app
@@ -17,10 +17,24 @@ services:
       - 3000:3000
 
     networks:
-      - my_dev_network
+      - my_network
 
-  # Add more containers below (nginx, postgres, etc.)
+  mongodb:
+      container_name: mongodb-development
+
+      image: mongo
+
+      environment:
+        - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME:-root}
+        - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD:-s3c0r3p4$$}
+        - MONGO_INITDB_DATABASE=${MONGO_INITDB_DATABASE:-next-app}
+
+      ports:
+        - 27017:27017
+
+      networks:
+        - my_network
 
 networks:
-  my_dev_network:
+  my_network:
     driver: bridge

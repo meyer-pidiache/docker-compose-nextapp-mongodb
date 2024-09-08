@@ -1,6 +1,6 @@
 # With Docker Compose
 
-This example contains everything needed to get a Next.js and MongoDB development and production environment up and running with Docker Compose.
+This example contains everything needed to get a Next.js and MongoDB, in a development and production environment up and running with Docker Compose. 
 
 ## Benefits of Docker Compose
 
@@ -15,7 +15,7 @@ This example contains everything needed to get a Next.js and MongoDB development
 Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
 
 ```bash
-git clone https://github.com/meyer-pidiache/ # Pending
+git clone https://github.com/meyer-pidiache/docker-compose-nextapp-mongodb.git
 ```
 
 Optionally, after the installation is complete:
@@ -26,14 +26,14 @@ It is recommended to commit a lockfile to version control. Although the example 
 
 ## Development
 
-First, run the development server:
+To run the development server:
 
 ```bash
 # Build dev
-docker compose -f docker-compose.dev.yml build
+docker compose -p dev -f docker-compose.dev.yml build
 
 # Up dev
-docker compose -f docker-compose.dev.yml up
+docker compose -p dev -f docker-compose.dev.yml up
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -44,17 +44,17 @@ You can start editing the page by modifying `pages/index.tsx`. The page auto-upd
 
 Multistage builds are highly recommended in production. Combined with the Next [Output Standalone](https://nextjs.org/docs/advanced-features/output-file-tracing#automatically-copying-traced-files) feature, only `node_modules` files required for production are copied into the final Docker image.
 
-First, run the production server (Final image approximately 110 MB).
+To run the production server (Final image approximately 110 MB).
 
 ```bash
 # Build prod
-docker compose -f docker-compose.prod.yml build
+docker compose -p prod -f docker-compose.prod.yml build
 
-# Up prod in detached mode
-docker compose -f docker-compose.prod.yml up -d
+# Up prod
+docker compose -p prod -f docker-compose.prod.yml up
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:4000](http://localhost:4000).
 
 ## Useful commands
 
