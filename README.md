@@ -54,16 +54,6 @@ docker compose -f docker-compose.prod.yml build
 docker compose -f docker-compose.prod.yml up -d
 ```
 
-Alternatively, run the production server without multistage builds (Final image approximately 1 GB).
-
-```bash
-# Build prod without multistage
-docker compose -f docker-compose.prod-without-multistage.yml build
-
-# Up prod without multistage in detached mode
-docker compose -f docker-compose.prod-without-multistage.yml up -d
-```
-
 Open [http://localhost:3000](http://localhost:3000).
 
 ## Useful commands

@@ -1,6 +1,6 @@
 services:
-  next-app:
-    container_name: next-app
+  next-app-prod:
+    container_name: next-app-prod
 
     build:
       context: ./next-app
@@ -11,13 +11,13 @@ services:
     # restart: always
 
     ports:
-      - 3000:3000
+      - 4000:4000
 
     networks:
-      - my_network
+      - my_prod_network
 
   # Add more containers below (nginx, postgres, etc.)
 
 networks:
-  my_network:
+  my_prod_network:
     driver: bridge

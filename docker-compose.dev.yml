@@ -1,6 +1,6 @@
 services:
-  next-app:
-    container_name: next-app
+  next-app-dev:
+    container_name: next-app-dev
 
     build:
       context: ./next-app
@@ -17,10 +17,10 @@ services:
       - 3000:3000
 
     networks:
-      - my_network
+      - my_dev_network
 
   # Add more containers below (nginx, postgres, etc.)
 
 networks:
-  my_network:
+  my_dev_network:
     driver: bridge
